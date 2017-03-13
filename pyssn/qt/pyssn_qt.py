@@ -13,16 +13,27 @@ Eli Bendersky (eliben@gmail.com)
 import sys, os
 import argparse
 
-from PyQt4 import QtCore, QtGui
+from pyssn import config, log_, __version__
 
-from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
-#from matplotlib.backends.backend_qt4agg import NavigationToolbar2QT as NavigationToolbar
-from matplotlib.backends.backend_qt4agg import NavigationToolbar2QT
+if config.INSTALLED['Qt4']:
+    from PyQt4 import QtCore, QtGui
+    from PyQt4.QtGui import QApplication, QMainWindow, QAction, QActionGroup
+    from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
+    #from matplotlib.backends.backend_qt4agg import NavigationToolbar2QT as NavigationToolbar
+    from matplotlib.backends.backend_qt4agg import NavigationToolbar2QT
+elif config.INSTALLED['Qt5']:
+    from PyQt5 import QtCore, QtGui
+    from PyQt5.QtWidgets import QApplication, QMainWindow, QAction, QActionGroup
+    from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+    #from matplotlib.backends.backend_qt4agg import NavigationToolbar2QT as NavigationToolbar
+    from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT
+else:
+    log_.error('No Qt backend available', calling='pyssn_qt')
+
 from matplotlib.figure import Figure
 import matplotlib.pyplot as plt
 
 import numpy as np
-from pyssn import log_, __version__
 from ..core.spectrum import spectrum
 from ..utils.misc import get_parser
 
@@ -59,7 +70,7 @@ class NavigationToolbar( NavigationToolbar2QT ):
 
         # create custom button
         pm=QtGui.QPixmap(32,32)
-        pm.fill(QtGui.QApplication.palette().color(QtGui.QPalette.Normal,QtGui.QPalette.Button))
+        pm.fill(QApplication.palette().color(QtGui.QPalette.Normal,QtGui.QPalette.Button))
         painter=QtGui.QPainter(pm)
         painter.fillRect(6,6,20,20,QtCore.Qt.red)
         painter.fillRect(15,3,3,26,QtCore.Qt.blue)
@@ -94,13 +105,13 @@ class NavigationToolbar( NavigationToolbar2QT ):
             self.curs.emit(event.ind)
 
 
-class AppForm(QtGui.QMainWindow):
+class AppForm(QMainWindow):
     
     def __init__(self, parent=None, init_filename=None, post_proc_file=None, use_workspace=False):
         
         self.calling = 'pySSN GUI'
         self.use_workspace = use_workspace
-        QtGui.QMainWindow.__init__(self, parent)
+        QMainWindow.__init__(self, parent)
         self.setWindowTitle('pySSN')
         self.sp = None
         self.axes = None
@@ -521,11 +532,11 @@ class AppForm(QtGui.QMainWindow):
             s = s + '    ' + str(i) + ' - ' + self.verbosity_list[i] + '\n'
         s = s + '\nSet with:\n' + '    log_level = <integer>'
         self.verbosity_button.setToolTip( s )        
-        self.verbosity_ag = QtGui.QActionGroup(self, exclusive=True)
+        self.verbosity_ag = QActionGroup(self, exclusive=True)
         
         self.verbosity_menu = QtGui.QMenu()
         for i in range(len(self.verbosity_list)):
-            a = self.verbosity_ag.addAction(QtGui.QAction(self.verbosity_list[i], self, checkable=True))
+            a = self.verbosity_ag.addAction(QAction(self.verbosity_list[i], self, checkable=True))
             self.verbosity_menu.addAction(a)
         self.verbosity_button.setMenu(self.verbosity_menu)
         self.verbosity_ag.triggered.connect(self.verbosity)
@@ -670,13 +681,13 @@ class AppForm(QtGui.QMainWindow):
         for i in range(len(self.line_sort_list)):
             s = s + '    ' + str(i) + ' - ' + self.line_sort_list[i] + '\n'
         s = s + '\nSet with:\n' + '    line_saved_ordered_by = <integer>'
-        self.line_sort_ag = QtGui.QActionGroup(self, exclusive=True)
+        self.line_sort_ag = QActionGroup(self, exclusive=True)
 
         self.line_sort_menu = self.file_menu.addMenu("Sort lines by")
         self.line_sort_menu.setToolTip(s)        
 
         for i in range(len(self.line_sort_list)):
-            a = self.line_sort_ag.addAction(QtGui.QAction(self.line_sort_list[i], self, checkable=True))
+            a = self.line_sort_ag.addAction(QAction(self.line_sort_list[i], self, checkable=True))
             self.line_sort_menu.addAction(a)
 
         self.line_sort_ag.triggered.connect(self.line_sort)
@@ -779,11 +790,11 @@ class AppForm(QtGui.QMainWindow):
         for i in range(len(self.line_tick_ax_list)):
             s = s + '    ' + str(i) + ' - ' + self.line_tick_ax_list[i] + '\n'
         s = s + '\nSet with:\n' + '    line_tick_ax = <integer>'
-        self.line_tick_ax_ag = QtGui.QActionGroup(self, exclusive=True)
+        self.line_tick_ax_ag = QActionGroup(self, exclusive=True)
         self.line_tick_ax_menu.setToolTip(s)        
 
         for i in range(len(self.line_tick_ax_list)):
-            a = self.line_tick_ax_ag.addAction(QtGui.QAction(self.line_tick_ax_list[i], self, checkable=True))
+            a = self.line_tick_ax_ag.addAction(QAction(self.line_tick_ax_list[i], self, checkable=True))
             self.line_tick_ax_menu.addAction(a)
         self.line_tick_ax_ag.triggered.connect(self.set_plot_ax2)
 
@@ -794,11 +805,11 @@ class AppForm(QtGui.QMainWindow):
         for i in range(len(self.line_tick_pos_list)):
             s = s + '    ' + str(i) + ' - ' + self.line_tick_pos_list[i] + '\n'
         s = s + '\nSet with:\n' + '    line_tick_pos = <integer>'
-        self.line_tick_pos_ag = QtGui.QActionGroup(self, exclusive=True)
+        self.line_tick_pos_ag = QActionGroup(self, exclusive=True)
         self.line_tick_pos_menu.setToolTip(s)        
 
         for i in range(len(self.line_tick_pos_list)):
-            a = self.line_tick_pos_ag.addAction(QtGui.QAction(self.line_tick_pos_list[i], self, checkable=True))
+            a = self.line_tick_pos_ag.addAction(QAction(self.line_tick_pos_list[i], self, checkable=True))
             self.line_tick_pos_menu.addAction(a)
         self.line_tick_pos_ag.triggered.connect(self.set_plot_ax2)
 
@@ -852,13 +863,13 @@ class AppForm(QtGui.QMainWindow):
         for i in range(len(self.verbosity_list)):
             s = s + '    ' + str(i) + ' - ' + self.verbosity_list[i] + '\n'
         s = s + '\nSet with:\n' + '    log_level = <integer>'
-        self.verbosity_ag = QtGui.QActionGroup(self, exclusive=True)
+        self.verbosity_ag = QActionGroup(self, exclusive=True)
         
         self.verbosity_menu = self.menuBar().addMenu("Verbosity")
         self.verbosity_menu.setToolTip(s)        
 
         for i in range(len(self.verbosity_list)):
-            a = self.verbosity_ag.addAction(QtGui.QAction(self.verbosity_list[i], self, checkable=True))
+            a = self.verbosity_ag.addAction(QAction(self.verbosity_list[i], self, checkable=True))
             self.verbosity_menu.addAction(a)
         self.verbosity_ag.triggered.connect(self.verbosity)
 
@@ -885,7 +896,7 @@ class AppForm(QtGui.QMainWindow):
     def create_action(  self, text, slot=None, shortcut=None, 
                         icon=None, tip=None, checkable=False, 
                         signal="triggered()"):
-        action = QtGui.QAction(text, self)
+        action = QAction(text, self)
         if icon is not None:
             action.setIcon(QtGui.QIcon(":/%s.png" % icon))
         if shortcut is not None:
@@ -1264,7 +1275,7 @@ class AppForm(QtGui.QMainWindow):
 
        self.nearbyLines_dialog = QtGui.QDialog()
        self.nearbyLines_dialog.resize(800,300)
-       sG = QtGui.QApplication.desktop().screenGeometry()
+       sG = QApplication.desktop().screenGeometry()
        x = (sG.width()-self.nearbyLines_dialog.width())
        y = (sG.height()-self.nearbyLines_dialog.height())
        self.nearbyLines_dialog.move(x,y)
@@ -1751,7 +1762,7 @@ class AppForm(QtGui.QMainWindow):
         
         if self.init_file_name:
             self.statusBar().showMessage('Running synthesis ...') 
-            QtGui.QApplication.processEvents() 
+            QApplication.processEvents() 
             self.start_spectrum()
             self.do_save = False
             self.on_draw()
@@ -1837,7 +1848,7 @@ class AppForm(QtGui.QMainWindow):
         self.line_info_dialog_height = 470
         #???
 
-        sG = QtGui.QApplication.desktop().screenGeometry()
+        sG = QApplication.desktop().screenGeometry()
         self.line_info_dialog_x = sG.width()-self.line_info_dialog_width
         self.line_info_dialog_y = 0
     
@@ -1850,7 +1861,7 @@ class AppForm(QtGui.QMainWindow):
           return
         log_.message('Changing sp_norm. Old: {}, New: {}'.format(old_sp_norm, new_sp_norm), calling=self.calling)
         self.statusBar().showMessage('Changing intensity scale of the observed spectrum ...') 
-        QtGui.QApplication.processEvents() 
+        QApplication.processEvents() 
         self.sp.renorm(new_sp_norm)
         self.on_draw()
 
@@ -1863,7 +1874,7 @@ class AppForm(QtGui.QMainWindow):
           return
         log_.message('Changing obj_velo. Old: {}, New: {}'.format(old_obj_velo, new_obj_velo), calling=self.calling)
         self.statusBar().showMessage('Executing doppler correction of the observed spectrum ...') 
-        QtGui.QApplication.processEvents() 
+        QApplication.processEvents() 
         self.sp.init_obs(obj_velo=new_obj_velo)
         self.sp.init_red_corr()
         self.sp.make_continuum()
@@ -1880,7 +1891,7 @@ class AppForm(QtGui.QMainWindow):
         log_.message('Changing E B-V. Old: {}, New: {}'.format(old_ebv, new_ebv), calling=self.calling)
         self.statusBar().showMessage('Changing color excess E(B-V) ...', 4000) 
         self.statusBar().showMessage('Executing reddening correction of the synthetic spectrum ...') 
-        QtGui.QApplication.processEvents() 
+        QApplication.processEvents() 
         self.sp.set_conf('e_bv', new_ebv)
         self.sp.init_red_corr()
         self.sp.make_continuum()
@@ -1890,7 +1901,7 @@ class AppForm(QtGui.QMainWindow):
             
     def rerun(self):
         self.statusBar().showMessage('Rerunning synthesis ...') 
-        QtGui.QApplication.processEvents() 
+        QApplication.processEvents() 
         self.set_limit_sp()
         self.sp.set_conf('resol', np.int(self.resol_box.text()))
         self.sp.set_conf('obj_velo', np.float(self.obj_velo_box.text()))
@@ -1906,7 +1917,7 @@ class AppForm(QtGui.QMainWindow):
         if self.sp is None:
             return
         self.statusBar().showMessage('Running update ...')
-        QtGui.QApplication.processEvents() 
+        QApplication.processEvents() 
         self.sp_norm()
         self.obj_velo()
         self.ebv()
@@ -2096,7 +2107,7 @@ class AppForm(QtGui.QMainWindow):
         new_resol = np.int(self.resol_box.text())
         log_.message('Changing resol. Old: {}, New: {}'.format(old_resol, new_resol), calling=self.calling)
         self.statusBar().showMessage('Changing rebinning factor ...') 
-        QtGui.QApplication.processEvents() 
+        QApplication.processEvents() 
         self.sp.set_conf('resol', new_resol)
         self.sp.init_obs()
         self.sp.init_red_corr()
@@ -2154,14 +2165,14 @@ class AppForm(QtGui.QMainWindow):
         self.sp.set_conf('line_saved_ordered_by',k)
 
 def main_loc(init_filename=None, post_proc_file=None):
-    app = QtGui.QApplication(sys.argv)
+    app = QApplication(sys.argv)
     form = AppForm(init_filename=init_filename, post_proc_file=post_proc_file)
     form.show()
     app.exec_()
     return form.fig
         
 def main_loc_obj(init_filename=None, post_proc_file=None):
-    app = QtGui.QApplication(sys.argv)
+    app = QApplication(sys.argv)
     form = AppForm(init_filename=init_filename, post_proc_file=post_proc_file)
     form.show()
     app.exec_()
@@ -2171,7 +2182,7 @@ def main():
     parser = get_parser()
     args = parser.parse_args()
     log_.level = args.verbosity    
-    app = QtGui.QApplication(sys.argv)
+    app = QApplication(sys.argv)
     form = AppForm(init_filename=args.file, post_proc_file=args.post_proc)
     form.show()
     app.exec_()

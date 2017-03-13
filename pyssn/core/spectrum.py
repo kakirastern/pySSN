@@ -1410,7 +1410,7 @@ class spectrum(object):
             end = '\n'
         sorts = np.argsort(self.liste_raies[sort])
         if k%2 == 1:
-          sorts = sorts[::-1]
+            sorts = sorts[::-1]
         with open(filename, 'w') as f:
             field_print = self.get_conf('line_field_print')
 
@@ -1444,19 +1444,19 @@ class spectrum(object):
             if self.get_conf('line_saved_header'):
                 s = ''
                 for item in field_print:
-                  f.write('{0:9s} : {1:>}\n'.format(item, field_name[item]))
+                    f.write('{0:9s} : {1:>}\n'.format(item, field_name[item]))
                   
                 for item in field_print:
                     width = field_format_width[item]
                     thisformat = '{{:{a}{w}s}{}}'
                     if ( item == field_print[n-1] ):
-                      add_s = end
+                        add_s = end
                     else:
-                      add_s = sep
+                        add_s = sep
                     if ( item == field_print[0] ):
-                      align = ''
+                        align = ''
                     else:
-                      align = '>'
+                        align = '>'
                     s = s + str('{:{a}{w}s}{}'.format(item, add_s, a=align, w=width))
                 f.write('\n'+s+'\n')
             
@@ -1471,16 +1471,16 @@ class spectrum(object):
                     for item in field_print:
                         thisformat = field_format[item]
                         if item == 'l_tot':
-                          r = wl
+                            r = wl
                         elif item == 'i_tot':
-                          r = i_tot
+                            r = i_tot
                         else:
-                          r = line[item]
+                            r = line[item]
                         s = s + str(thisformat.format(r))
                         if ( item == field_print[n-1] ):
-                          s = s + end
+                            s = s + end
                         else:
-                          s = s + sep
+                            s = s + sep
                     f.write(s)
 
     def plot1(self):
@@ -1490,7 +1490,7 @@ class spectrum(object):
         ax.legend()
         return f, ax
         
-    def plot2(self, hr=False, cut=None, split=False, do_ax2 = True, do_ax3 = True,
+    def plot2(self, hr=False, cut=None, split=False, do_ax2 = False, do_ax3 = True,
               do_buttons=True, xlims=None, fontsize=12, legend_loc=1, fig=None, 
               magenta_ref=None, magenta_lab=None,
               cyan_ref = None, cyan_lab=None, call_init_axes=True):

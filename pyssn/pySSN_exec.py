@@ -7,10 +7,10 @@ def main():
 
     parser = get_parser()
     args = parser.parse_args()
-    if args.noQt4:
+    if args.noQt:
         pyssn.config.INSTALLED['Qt4'] = False
-
-    if pyssn.config.INSTALLED['Qt4']:
+        pyssn.config.INSTALLED['Qt5'] = False
+    if pyssn.config.INSTALLED['Qt4'] or pyssn.config.INSTALLED['Qt5']:
         from pyssn.qt.pyssn_qt import main
         sys.exit(main())
     else:

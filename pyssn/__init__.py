@@ -18,4 +18,6 @@ from .core.spectrum import read_data, spectrum
 from .utils.physics import CST
 if config.INSTALLED['Qt4']:
     from .qt import pyssn_qt
+elif config.INSTALLED['Qt5']:
+    from .qt import pyssn_qt
 from .phyat_lists.manage_phyat_list import make_phyat_list, phyat2model

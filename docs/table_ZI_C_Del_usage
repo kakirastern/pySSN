@@ -1,0 +1,74 @@
+table_ZI_C_Del_usage 18/11/16
+NEW VERSION "24 SEQ (or more!)" :
+
+              Z - I = (s-1) + C(n) + Del(n,s)
+s is sequence number, varying in practice here from 1 to 24 (possible up to 34).
+
+Z-I     (<2)     <10       <18            <36               <54                  <86              (<118)
+ n       (1)      2         3              4                 5                    6                 (7)
+C(n) =    0       2        10             18                36                   54                (86)
+Del(n,s)  0    0    0    0    0      0   -8    +10      0   -8   +10      0   -20    +6     +24  
+s =    (-1-0) 1-2  3-8  1-2  3-8    1-2  9-20  3-8    1-2  9-20  3-8     1-2  21-34  9-20   3-8
+name         s1s2 p1p6 s1s2 p1p6   s1s2 d1d10 p1p6   s1s2 d1d10 p1p6    s1s2  f1f14 d1d10  p1p6
+                                       +ds1ds2           +ds1ds2                   +ds1ds2
+seq     (1s)  2s   2p   3s   3p     4s* 3d3ds  4p     5s* 4d4ds  5p      6s*   4f   5d5ds   6p
+
+** 4s*: only K Ca (Sc difrt), 5s*: only Rb Sr (Y difrt), 6s*: only Cs Ba / Lu**? (Hf difrt)
+** Lu2 Lu3 exceptions, NOT treated --> Lu, (Hf) treated as Sc or Y.
+-------------------
+Usage C(n), Del(n,s) :
+-------------------
+On se donne Z et I, dc Z-I, dc n, dc C(n), dc s = Cte - Del(n,s), avec Del(n,s) pouvant prendre plusieurs valeurs.
+On essaye chacun des Del(n,s) possibles et on regarde si le s déduit tombe dans les valeurs de s associées à ce Del(n,s). Je crois que c'est assez facilement programmable. Je peux meme essayer en fortran si tu veux.
+En général, un et un seul Del(n,s) va marcher et fournir une valeur unique de s. Mais il faut résoudre l'ambiguités corrrespondant au deux "recouvrement" (les anciens "ps") :
+        s1 avec d1 ou f1
+        s2 avec d2 ou f2
+comme expliqué avec les derniers exemples (cas ambigus). 
+
+Ex: Xe5 (5p2) s=4? :  54 5 Z-I=49 n=5 C(n)=36 
+              (s-1) + Del(n,s)=49-36=13  -->  s=14, 14+8=22, 14-10=4
+                                               1-2    9-20     3-8
+                                               no      no     p1p6
+                                                              p2 ok
+    Pt4 (6d7) s=15? : 78 4 Z-I=74 n=6 C(n)=54
+              (s-1) + Del(n,s)=74-54=20 -->   s=21, 21+20=41, 21-6=15, 21-24=-3
+                                               1-2    23-36      9-20   3-8
+                                               no       no      d7 ok    no
+                                                               d1-d10
+                                                              +ds1ds2
+    Fe4 (4d5) s=13? : 26 4 Z-I=22 n=4 C(n)=18  
+              (s-1) + Del(n,s)=22-18=4  -->    s=5,  5+8=13,  5-10=-5
+                                               1-2    9-20     3-8
+                                               no    d5 ok      no
+                                                    d1-d10
+                                                   +ds1ds2
+   As5 (4ds1) s=19? : 33 5 Z-I=28 n=5 C(n)=18
+             (s-1) + Del(n,s)=28-18=10 -->    s=11, 11+8=19, 11-10=1
+                                               1-2    9-20    3-8
+                                               no   ds1 ok     no
+                                                    d1-d10
+                                                   +ds1ds2
+ Cas ambigus (les anciens "ps") :
+ Résolution : pour n > 3, les ns1 sont réduits aux charges I=1 et 2, les ns2 sont réduits à la charge I=1. 
+    Ba2 (6s1) s=1? :  56 2 Z-I=54 n=6 C(n)=54
+             (s-1) + Del(n,s)=54-54= 0 -->     s=1,  1+20=21, 1-6=-5,  1-24=-23   
+                                               1-2    21-34    9-20      3-8
+                                 I<3         s1 ok   f1 ok?no    no       no
+                                              s1s2   f1f14
+    La3 (6f1) s=21? :  57 3 Z-I=54 n=6 C(n)=54
+             (s-1) + Del(n,s)=54-54= 0 -->     s=1,  1+20=21, 1-6=-5,  1-24=-23   
+                                               1-2    21-34    9-20      3-8
+                                 I>2       s1 ok?no   f1 ok      no       no
+                                              s1s2    f1f14
+    Sc3 (4d1)  s=9? :  21 3 Z-I=18 n=4 C(n)=18
+             (s-1) + Del(n,s)=54-54= 0 -->     s=1,   1+8=9,  1-10=-9
+                                               1-2     9-20     3-8
+                                 I>2       s1 ok?no   d1 ok      no
+                                              s1s2   d1-d10
+                                                    +ds1ds2 
+    Nb4 (5d2) s=10? :  41 4 Z-I=37 n=5 C(n)=36
+             (s-1) + Del(n,s)=37-36= 1 -->     s=2,  2+8=10,   2-10=-8
+                                               1-2    9-20      3-8
+                                 I>1       s2 ok?no   d2 ok      no
+                                              s1s2   d1-d10
+                                                    +ds1ds2 

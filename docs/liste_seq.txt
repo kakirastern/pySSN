@@ -1,0 +1,162 @@
+liste_seq 18/11/16
+
+s = 1
+s1  ns  2S; (n-1)p6.ns  2S
+n=2: Li1 Be2 B3  C4  N5  O6
+n=3: Na1 Mg2 Al3 Si4 P5  S6 
+n=4: K1  Ca2 stop
+n=5: Rb1 Sr2 stop  
+n=6: Cs1 Ba2 stop 
+s = 2
+s2  ns2 1S; (n-1)p6.ns2  1S
+n=2: BeI B2  C3  N4  O5
+n=3: Mg1 Al2 Si3 P4  S5  Cl6
+n=4: Ca1 stop
+n=5: Sr1 stop 
+n=6: Ba1 stop
+
+* (Close to s1, s2, REPEATED FROM BELOW)
+s = 19
+ds1 (n-1)d10.ns 2S
+n=4: Cu1 Zn2 Ga3 Ge4 As5
+n=5: Ag1 Cd2 In3 Sn4 Sb5 Te6 
+n=6: Au1 Hg2 Tl3 Pb4
+s = 20
+ds2 (n-1)d10.ns2 1S
+n=4: Zn1 Ga2 Ge3 As4 Se5 
+n=5: Cd1 In2 Sn3 Sb4 Te5 I6  Xe7
+n=6: Hg1 Tl2 Pb3
+
+s = 3
+p1  ns2.np 2P
+n=2: B1  C2  N3  O4  F5  Ne6 Na7 Mg8 Al9 Si10 P11  S12  Cl13 Ar14 K15  Ca16 Sc17 Ti18 V19  Cr20 Mn21 
+n=3: Al1 Si2 P3  S4  Cl5 Ar6 K7  Ca8 Sc9 Ti10 V11  Cr12 Mn13 Fe14 Co15 Ni16 Cu17 Zn18 Ga19 Ge20 As21 Se22 (*interp: Br23) Kr24 
+n=4: Ga1 Ge2 As3 Se4 Br5 Kr6 Rb7 Sr8 Y9  Zr10 Nb11 Mo12 
+n=5: In1 Sn2 Sb3 Te4 I5  Xe6 Cs7 Ba8 (*extr? La9 Ce10)
+n=6: Tl1 Pb2 Bi3                (Th8)
+s = 4
+p2  ns2.np2 3P
+n=2: C1  N2  O3  F4  Ne5 Na6 Mg7 Al8 Si9 P10  S11  Cl12 Ar13 K14  Ca15 Sc16 Ti17 V18  Cr19 Mn20 Fe21 
+n=3: Si1 P2  S3  Cl4 Ar5 K6  Ca7 Sc8 Ti9 V10  Cr11 Mn12 Fe13 Co14 Ni15 Cu16 Zn17 Ga18 fs: Ge19 As(int_) Se21 (*extr: Br22 Kr23)
+n=4: Ge1 As2 Se3 Br4(int_1S) Kr5 Rb6 Sr7 (*interp: Y8  Zr9 Nb10) Mo11 (Tc) (*extr? Ru13 Rh14 Pd15)
+n=5: Sn1 Sb2 Te3 I4  Xe5 Cs6 Ba7 (*extr: La8 Ce9 Pr10 Nd11)
+n=6: Pb1 Bi2                (Th7)
+s = 5
+p3  ns2.np3 4S
+n=2: N1  O2  F3  Ne4 Na5 Mg6 Al7 Si8 P9  S10  Cl11 Ar12 K13
+n=3: P1  S2  Cl3 Ar4 K5  (*+x: Ca6 Sc7 Ti8 V9) Cr10 Mn11 Fe12 Co13 Ni14 Cu15 Zn16 Ga17 Ge18 (*interp: As19) Se20 (*interp: Br21) Kr22 Rb23 Sr24
+n=4: As1 Se2 Br3 Kr4 Rb5 Sr6 (*interp: Y7  Zr8 Nb9) Mo10 (*extr? (Tc) Ru12 Rh13 Pd)
+n=5: Sb1 Te2 I3  Xe4 Cs5 Ba6 (*extr? La7 Ce8 Pr9 Nd10)
+n=6: Bi1                (Th6)
+s = 6
+p4  ns2.np4 3P
+n=2: O1  F2  Ne3 Na4 Mg5 Al6 Si7 P8  S9  Cl10 Ar11 K12  Ca13 Sc14 Ti15 V16  Cr17 Mn18 Fe19 Co20 Ni21 
+n=3: S1  Cl2 Ar3 K4  Ca5 Sc6 Ti7 V8  Cr9 Mn10 Fe11 Co12 Ni13 Cu14 Zn15 Ga16 Ge17 (*interp: As18) Se19 (*interp: Br20) Kr21
+n=4: Se1 Br2 Kr3 Rb4 Sr5 (*interp: Y6  Zr7 Nb8) Mo9 (*extr? (Tc) Ru11 Rh Pd)
+n=5: Te1 I2  Xe3 Cs4 Ba5 (*extr? La6 Ce7 Pr8 Nd9)
+n=6:                (Th5)
+s = 7
+p5  ns2.np5 2P*
+n=2: F1  Ne2 Na3 Mg4 Al5 Si6 P7  S8  Cl9 Ar10 K11 Ca12  Sc13 Ti14 V15  Cr16 Mn17 Fe18 
+n=3: Cl1 Ar2 K3  Ca4 Sc5 Ti6 V7  Cr8 Mn9 Fe10 Co11 Ni12 Cu13 (*fs_UV: Zn14 Ga15 Ge16 As17 Se18 Br19 Kr20)
+n=4: Br1 Kr2 Rb3 Sr4 Y5  Zr6 Nb7 Mo8 (*extr? (Tc) Ru10 Rh11 Pd12 Ag13 Cd14)
+n=5: I1  Xe2 Cs3 Ba4 La5 Ce6 (*extr? Pr7 Nd8 (Pm) Sm10)
+n=6: (Ac1) Rn2  (Th4)
+n=7:    (Og2)
+(s = 8)
+p6 np6 1S no line
+(*n=2: Ne1...)
+
+s = 9
+d1 (n-1)p6.(n-1)d 2D and (n-1)p6.4f14.(n-1)d 2D
+n=4:         Sc3 Ti4 V5  Cr6 Mn7 Fe8 Co9 Ni10 Cu11 Zn12 Ga13 Ge14 As15 Se16 Br17 Kr18 Rb19 Sr20 (*interp_fs? Y21  Zr22 Nb23) Mo24
+n=5:         Y3  Zr4 Nb5 Mo6 (*extr: (Tc) Ru8 Rh9 Pd10)
+n=6:         Lu3(4f14.6s 2S) Hf4 (Ta) W6 (***extr_fs: (Re) Os8 Ir9 Pt10 Au11 Hg12 Tl13 Pb14)
+s = 10
+d2 (n-1)p6.(n-1)d2 3F and (n-1)p6.4f14.(n-1)d2 3F
+n=4:     Sc2 Ti3 V4  Cr5 Mn6 Fe7 Co8 Ni9 Cu10 Zn11 (*extr? Ga12 Ge13 As14 Se15 Br16 Kr17)
+n=5:     Y2  Zr3 Nb4 Mo5 (*extr? (Tc) Ru7 Rh8 Pd9 Ag10 Cd11 In12 Sn13 Sb14 Te15 I16  Xe17 Cs18 Ba19)
+n=6      Lu2 6s2 1S no line (Hf (Ta) W5 5d2 3F (Re) Os Ir Pt Au Hg Tl Pb13)
+s = 11
+d3 (n-1)p6.(n-1)d3 4F and (n-1)p6.4f14.(n-1)d3 4F
+n=4: Sc1(3d.4s2 2D) Ti2(3d2.(3F).4s 4F) V3  Cr4 Mn5 Fe6 Co7 Ni8 (*extr: Cu9 Zn10 Ga11 Ge12 As13 Se14 Br15 Kr16)
+n=5: Y1(3p6.4s2.3d10.4p6.4d1.5s2 2D) Zr2(5s 4F) Nb3(3d10.4p6.4d3 4F) Mo4 (*extr?? (Tc) Ru6 Rh Pd Ag Cd In Sn Sb Te I  Xe Cs Ba)
+n=6: Lu1(5s2.4d10.5p6.5s2.4d10.5p6.4f14.5d1.6s2 2D) Hf2(4f14.5d.6s2 2D) (Ta rien) W4(4f14.5d3 4F) (*extr?? NO (Re) Os6 Ir7 Pt8 Au9 Hg10 Tl11 Pb12)
+s = 12
+d4 (n-1)p6.(n-1)d4 5D and...
+n=4: Ti1(3F) V2 Cr3 Mn4 Fe5 Co6 Ni7 (*extr: Cu8 Zn9 Ga10 Ge11 As12 Se13 Br14 Kr15) 
+n=5: Zr1(3D) Nb2 Mo3 (*extr?? NO (Tc) Ru5 Rh6 Pd7 Ag8 Cd9 In10)
+n=6: Hf1(5d2.6s2 3F) (Ta(5F)) W3 (*extr?? NO (Re) Os5 Ir6 Pt7 Au8 Hg9 Tl10 Pb11)
+s = 13
+d5 (n-1)p6.(n-1)d5 6S
+n=4: V1(3d3.4s2 4F)  Cr2 Mn3 Fe4 Co5 Ni6 (*extr_int_uv? Cu7 Zn8 Ga9 Ge10)
+n=5: Nb1(6D) Mo2 (*extr?? NO (Tc) Ru4 Rh5 Pd6)
+n=6: (Ta) W2(6D) (*extr?? NO (Re) Os4 Ir5 Pt6 Au7 Hg8 Tl9 Pb10)
+s = 14
+d6 (n-1)p6.(n-1)d6 5D and...
+n=4: Cr1&Mn2(3d5(6S)4s 7S) Fe3 Co4 Ni5 (*corr? Cu6 Zn7) (*extr_fs: Ga8 Ge9 As10 Se11 Br12 Kr13)
+n=5: Mo1((6s).5s 7S) (Tc) Ru3 (*extr?? Rh4 Pd5 Ag6 Cd7 In8)
+n=6: W1(5d4.6s2 5D) (Re(6s 7S)) (*interpol?? Os3) Ir4 Pt5 (*extr_fs? Au6 Hg7 Tl8 Pb9) 
+s = 15
+d7 (n-1)p6.(n-1)d7 4F
+n=4: Mn1(3d5.4s2 6S) Fe2(3d6(5D)4s 6D) Co3 Ni4 Cu5 Zn6 Ga7 (*extr_fs: Ge8 As9 Se10 Br11 Kr12)
+n=5: (Tc1(4d5.5s2 6S)) Ru2 Rh3 (*extr?? Pd4 Ag5 Cd6) 
+n=6: (Re1(5d5.6s2 6S)) Os2(5d6.(5D).6s 6D) (*interp NO: Ir3) Pt4 (*extr?? NO Au5 Hg6 Tl7 Pb8)  
+s = 16
+d8 (n-1)p6.(n-1)d8 3F
+n=4: Fe1(4s2 5D) Co2 Ni3 Cu4 Zn5 Ga6 Ge7 (*extr: As8 _fs: Se9 Br10 Kr11)
+n=5: Ru1(4d7.(4F).5s 5F) Rh2 Pd3 (*extr_fs? Ag4 Cd5 In6)  
+n=6: Os1(5d6.6s2 5D) Ir2(5d7.(4F).6s 5F) (*NO Pt3 Au4 Hg5 Tl6 Pb7)   
+s = 17
+d9 (n-1)p6.(n-1)d9 2D
+n=4: Co1(4s2 4F) Ni2 *fs: Cu3 Zn4 Ga5 Ge6 As7 Se8 Br9 Kr10 Rb11 Sr12 Y13  Zr14 Nb15 Mo16 
+n=5: Rh1(5s 4F) Pd2 Ag3 Cd4 In5 Sn6 Sb7 Te8 I9  Xe10 Cs11 Ba12 (*extr? La13 Ce14)
+n=6: Ir1(mix 4F) Pt2 (*interp: Au3) Hg4 (*extrap: Tl5 Pb6)
+s = 18
+d10 (n-1)p6.(n-1)d10 1S and...
+n=4: Ni1(4s2 3F+4s 3D) Cu2 Zn3 
+n=5: Pd1 Ag2 Cd3
+n=6: Pt1(6s 3D+) Au2 (*extrap?? Hg3 Tl4 Pb5) 
+s = 19
+ds1 (n-1)d10.ns 2S
+n=4: Cu1 Zn2 Ga3 Ge4 As5
+n=5: Ag1 Cd2 In3 Sn4 Sb5 Te6 
+n=6: Au1 Hg2 Tl3 Pb4
+s = 20
+ds2 (n-1)d10.ns2 1S
+n=4: Zn1 Ga2 Ge3 As4 Se5 
+n=5: Cd1 In2 Sn3 Sb4 Te5 I6  Xe7
+n=6: Hg1 Tl2 Pb3
+
+s = 21
+f1 (n-2)d10.(n-1)p6.(n-2)f 2F*
+n=6: La3(5p6.5d 2D) Ce4 Pr5 (*extr_fs? Nd6 (Pm7) Sm8)
+n=7: Ac3(5p6.5d 2D) (*no dat: Th4(5f.6p6 2F* no lev) (Pa) U6)
+s = 22
+f2 (n-1)p6.(n-2)f2 3H
+n=6: La2(5p6.5d2 3F mix) Ce3 Pr4 (*extr_fs? Nd5 (Pm6) Sm7)
+n=7: Ac2(5p6.5d 2D) Th3(5f.6d 3H* mix) (*no dat: (Pa) U5(5f2.6p6 3H))
+s = 23
+f3 (n-2)f3 4I*
+n=6: La1(5d.6s2 2D) Ce2(4f.(2F*).5d2.(3F) 4H*) Pr3(4f3 4I*) Nd4  (*extr? (Pm5) Sm6)
+n=7: Ac1(6d.7s2 2D) Th2(6d.7s2 2D_3/2) (*no dat: (Pa) U4)
+s = 24
+f4 (n-2)f4 5I and 6s2.4f14.(n-2)d10.(n-1)p6.(n-2)f4 5I
+n=6: Ce1(4f.5d.6s2 1G*) Pr2(4f3.(4I*<9/2>).6s<1/2> (9/2,1/2)*) Nd3(4f4 5I fs, perm opt) (Pm4 lev:) (*extr?? Sm5)
+n=7: Th1(6d2.7s2 3F) (*no dat: (Pa2(5f2.7s2 3H no lev)) U3(4f4 5I no lev))
+
+************** f5 f6 pour mém +Th ***********
+s = 25
+f5 (n-2)f5 6H*
+n=6: Pr1(4f3.6s2 4I*) Nd2(4f4.(5I).6s 6I) (Pm3(4f5 6H* no lev)) Sm4  (*no extr)
+n=7:  (*no dat: (Pa1(5f2.6d.7s2 4K no lev) U2(5f3.7s2 4I* no lev) (Np) Pu4(f5 6H* no lev))
+s = 26
+f6 (n-2)f6 7F
+n=6: Nd2=1(4f4.(5I).6s 6I) (Pm2) Sm3 Eu  (*no extr: Gd..)
+n=7:  (*no dat: U1(5f3.6d.7s2 5L* no lev)  (Np2) Pu3(f6 7F no lev)
+
+Thorium90_Ab0.7: Th1 = [Rn] 6d2.7s2 = 6s2.4f14.5d10.6p6.7s2.6d2 ; dat for 3 ions ; keep a few opt lines for each?
+Th_III 5f.6d GS=mix 3H* 3F 3F*.. complex (?opt: perm 3H*-3H interc 3H*-1G)
+Th_II 6d.7s2 complex mix, GS=2D_3/2_no5/2 (?IR&opt: 2x1 perm 2D-2F*)
+Th_I 6d2.7s2 complex mix, GS=3F 2fs  (?opt: several perm 3F-3G*/F* interc 3F-1G*)
+************** f5 f6 pour mém +Th  fin **********
